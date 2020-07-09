@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_web_login_ui/login/widgets/login_form.dart';
 
 class DesktopMode extends StatefulWidget {
