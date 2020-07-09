@@ -1,16 +1,21 @@
-# flutter_web_login_ui
+# Flutter Web Login UI with Reactive Form
 
-A new Flutter project.
+<a href="https://github.com/RonaldoMurakamiK/flutter-web-login-ui/blob/master/LICENSE">
+     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
+</a><br><br>
+
+## Screenshot
+<img src="./screenshots/desktop-apresentation.png" width="100%" height="100%"/><br><br>
 
 ## Getting Started
+```sh
+$ flutter channel beta
+$ flutter upgrade
+$ flutter config --enable-web
+$ flutter run -d chrome
+```
 
-This project is a starting point for a Flutter application.
+For more details, visit: https://flutter.dev/docs/get-started/web<br><br>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+This repository is released under the [MIT](https://github.com/RonaldoMurakamiK/flutter-web-login-ui/blob/master/LICENSE) license.
