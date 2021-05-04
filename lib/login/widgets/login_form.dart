@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginForm extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
 
+class LoginForm extends StatefulWidget {
   final paddingTopForm, fontSizeTextField, fontSizeTextFormField, spaceBetweenFields, iconFormSize;
   final spaceBetweenFieldAndButton, widthButton, fontSizeButton, fontSizeForgotPassword, fontSizeSnackBar, errorFormMessage;
 
@@ -15,120 +12,102 @@ class LoginForm extends StatelessWidget {
   );
 
   @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+
+  final _usernameController = TextEditingController();
+
+  final _passwordController = TextEditingController();
+
+  bool _isHidePassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isHidePassword = !_isHidePassword;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final double widthSize = MediaQuery.of(context).size.width;
-    final double heightSize = MediaQuery.of(context).size.height; 
-    
+    final double heightSize = MediaQuery.of(context).size.height;
+
+
     return Form(
       key: _formKey,
       child: Padding(
-        padding: EdgeInsets.only(left: widthSize * 0.05, right: widthSize * 0.05, top: heightSize * paddingTopForm),
+        padding: EdgeInsets.only(left: widthSize * 0.05, right: widthSize * 0.05, top: heightSize * widget.paddingTopForm),
         child: Column(
           children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Usuário', style: TextStyle(
-                fontSize: widthSize * fontSizeTextField,
-                fontFamily: 'Poppins',
-                color: Colors.white)
-              )
-            ),
-            TextFormField(
+             TextFormField(
               controller: _usernameController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Digite seu usuário para prosseguirmos!';
-                }
-              },
-              cursorColor: Colors.white,
-              keyboardType: TextInputType.text,
+                validator: (value) {
+                  if(value.isEmpty) {
+                    return 'Email Tidak Boleh Kosong!';
+                  }
+                },
+              keyboardType: TextInputType.emailAddress,
+              autofocus: false,
+
               decoration: InputDecoration(
-                fillColor: Colors.white,
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red, width: 2)
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2)
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2)
-                ),
-                labelStyle: TextStyle(color: Colors.white),
-                errorStyle: TextStyle(color: Colors.white, fontSize: widthSize * errorFormMessage),
-                prefixIcon: Icon(
-                  Icons.person,
-                  size: widthSize * iconFormSize,
-                  color: Colors.white,
-                ),
+                labelText: "Email",
+                contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 15.0),
+                border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
               ),
-              textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.white, fontSize: fontSizeTextFormField)
+
             ),
-            SizedBox(height: heightSize * spaceBetweenFields),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Senha', style: TextStyle(
-                fontSize: widthSize * fontSizeTextField,
-                fontFamily: 'Poppins',
-                color: Colors.white)
-              )
-            ),
+
+            SizedBox(height: heightSize * widget.spaceBetweenFields),
             TextFormField(
-              controller: _passwordController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Digite sua senha para prosseguirmos!';
-                }
-              },
-              cursorColor: Colors.white,
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: InputDecoration(
-                fillColor: Colors.white,
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red, width: 2)
+                obscureText: _isHidePassword,
+                autofocus: false,
+                initialValue: '',
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 15.0),
+                border:OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+                  labelText: 'Password',
+                suffixIcon: GestureDetector(
+                onTap: () {
+                _togglePasswordVisibility();
+                },
+                child: Icon(
+                _isHidePassword ? Icons.visibility_off : Icons.visibility,
+                color: _isHidePassword ? Colors.grey : Colors.blue,
                 ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2)
                 ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2)
+                isDense: true,
                 ),
-                labelStyle: TextStyle(color: Colors.white),
-                errorStyle: TextStyle(color: Colors.white, fontSize: widthSize * errorFormMessage),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  size: widthSize * iconFormSize,
-                  color: Colors.white,
                 ),
-              ),
-              textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.white, fontSize: fontSizeTextFormField)
-            ),
-            SizedBox(height: heightSize * spaceBetweenFieldAndButton),
+
+            SizedBox(height: heightSize * widget.spaceBetweenFieldAndButton),
             FlatButton(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5)
               ),
-              padding: EdgeInsets.fromLTRB(widthButton, 15, widthButton, 15),
+              padding: EdgeInsets.fromLTRB(widget.widthButton, 15, widget.widthButton, 15),
               color: Colors.white,
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-                  
+
                 }
               },
-              child: Text('ENTRAR', style: TextStyle(
-                fontSize: widthSize * fontSizeButton,
+              child: Text('Sigin', style: TextStyle(
+                fontSize: widthSize * widget.fontSizeButton,
                 fontFamily: 'Poppins',
                 color: Color.fromRGBO(41, 187, 255, 1))
               )
             ),
             SizedBox(height: heightSize * 0.01),
-            Text('Esqueci minha senha', style: TextStyle(
-              fontSize: widthSize * fontSizeForgotPassword,
-              fontFamily: 'Poppins',
-              color: Colors.white)
-            )
+            // Text('Esqueci minha senha', style: TextStyle(
+            //   fontSize: widthSize * fontSizeForgotPassword,
+            //   fontFamily: 'Poppins',
+            //   color: Colors.white)
+            // )
           ]
         )
       )
