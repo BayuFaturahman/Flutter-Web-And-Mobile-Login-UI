@@ -5,7 +5,6 @@
 </a><br><br>
 
 ## Screenshot
-<img src="./screenshots/desktop-apresentation.png" width="100%" height="100%"/><br><br>
 
 ## Getting Started
 ```sh
