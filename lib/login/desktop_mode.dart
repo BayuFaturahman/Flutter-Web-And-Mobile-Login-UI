@@ -15,27 +15,32 @@ class _DesktopModeState extends State<DesktopMode> {
     return Container(
       // color: Colors
       decoration:BoxDecoration(image:DecorationImage(
-        image: AssetImage("images/bg.jpeg"),
+        image: AssetImage("assets/images/bg.jpeg"),
         fit: BoxFit.cover,
       )),
+
       child: Row(
         children: [
           Container(
             height: heightSize * 1.0,
             width: widthSize * 0.50,
-            child: Card(
+              child: Card(
               elevation: 5,
-              child: Container(
+                color: Color(0xff2F284E).withOpacity(0.8),
+                child: Container(
                       padding: EdgeInsets.only(top: 20),
-                      color: Color.fromRGBO(41, 187, 255, 1),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset('images/login-form.png', height: heightSize * 0.2, width: widthSize * 0.15),
+                          // Image.asset('images/login-form.png', height: heightSize * 0.2, width: widthSize * 0.15),
                           SizedBox(height: 20),
-                          LoginForm(
-                            0, 0.009, 16, 0.04, 0.01, 0.04,
-                            75, 0.01, 0.007, 0.01, 0.006
+                          Container(
+                            height: heightSize * 0.6,
+                            width: widthSize * 0.3,
+                            child: LoginForm(
+                              0, 0.009, 16, 0.04, 0.01, 0.04,
+                              200, 0.009, 0.007, 0.01, 0.006
+                            ),
                           )
                         ]
                       )

@@ -35,14 +35,43 @@ class _LoginFormState extends State<LoginForm> {
     final double widthSize = MediaQuery.of(context).size.width;
     final double heightSize = MediaQuery.of(context).size.height;
 
-
     return Form(
       key: _formKey,
       child: Padding(
         padding: EdgeInsets.only(left: widthSize * 0.05, right: widthSize * 0.05, top: heightSize * widget.paddingTopForm),
         child: Column(
           children: <Widget>[
-             TextFormField(
+            SizedBox(
+              height: (MediaQuery.of(context).size.height / 3.5),
+            ),
+            Row(
+              children: [
+                Text(
+                  "ALPHA",
+                  style: TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 18,
+            ),
+            Row(
+              children: [
+                Text(
+                  "Sign In",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 24,
+            ),
+
+            TextFormField(
               controller: _usernameController,
                 validator: (value) {
                   if(value.isEmpty) {
@@ -55,8 +84,10 @@ class _LoginFormState extends State<LoginForm> {
               decoration: InputDecoration(
                 labelText: "Email",
                 contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 15.0),
+                filled: true,
+                fillColor: Colors.grey.withOpacity(0.5),
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+                OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
               ),
 
             ),
@@ -69,6 +100,8 @@ class _LoginFormState extends State<LoginForm> {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 15.0),
+                  filled: true,
+                  fillColor: Colors.grey.withOpacity(0.5),
                 border:OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
                   labelText: 'Password',
                 suffixIcon: GestureDetector(
@@ -87,18 +120,19 @@ class _LoginFormState extends State<LoginForm> {
             SizedBox(height: heightSize * widget.spaceBetweenFieldAndButton),
             FlatButton(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5)
+                borderRadius: BorderRadius.circular(15.0)
               ),
-              padding: EdgeInsets.fromLTRB(widget.widthButton, 15, widget.widthButton, 15),
+              padding: EdgeInsets.fromLTRB(120.0, 15.0, 120.0, 15.0),
               color: Colors.white,
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-
                 }
               },
-              child: Text('Sigin', style: TextStyle(
+              child: Text('SING IN', style: TextStyle(
                 fontSize: widthSize * widget.fontSizeButton,
                 fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold,
+
                 color: Color.fromRGBO(41, 187, 255, 1))
               )
             ),
