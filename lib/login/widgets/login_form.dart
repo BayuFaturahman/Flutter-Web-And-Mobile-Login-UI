@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
             Row(
               children: [
                 Text(
-                  "Sign In",
+                  "Sign In2",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
