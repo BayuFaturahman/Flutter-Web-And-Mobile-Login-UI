@@ -46,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
               controller: _usernameController,
                 validator: (value) {
                   if(value.isEmpty) {
-                    return 'Email Tidak Boleh Kosong!';
+                    return 'Email Tidak Boleh Kosong';
                   }
                 },
               keyboardType: TextInputType.emailAddress,
