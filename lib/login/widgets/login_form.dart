@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
             Row(
               children: [
                 Text(
-                  "Sign In2",
+                  "Sign In",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -118,12 +118,13 @@ class _LoginFormState extends State<LoginForm> {
                 ),
 
             SizedBox(height: heightSize * widget.spaceBetweenFieldAndButton),
-            FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0)
-              ),
-              padding: EdgeInsets.fromLTRB(120.0, 15.0, 120.0, 15.0),
-              color: Colors.white,
+            ElevatedButton(
+              // style: ButtonStyle(backgroundColor: Colors.redAccent),
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.circular(15.0)
+              // ),
+              // padding: EdgeInsets.fromLTRB(120.0, 15.0, 120.0, 15.0),
+              // color: Colors.white,
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                 }
@@ -134,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
                 fontWeight: FontWeight.bold,
 
                 color: Color.fromRGBO(41, 187, 255, 1))
-              )
+              ),
             ),
             SizedBox(height: heightSize * 0.01),
             // Text('Esqueci minha senha', style: TextStyle(
